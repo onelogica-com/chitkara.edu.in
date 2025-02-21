@@ -181,7 +181,7 @@
                     <a class="nav-link" style="text-decoration: none;" href="#">Centres of Excellence</a>
                 </li>
             </ul>
-            <a href="#" class="admissions-btn">Admissions</a>
+            <a href="https://saas-efficiency-1686--chitdev.sandbox.my.site.com"  class="admissions-btn">Admissions</a>
         </div>
     </nav>
     
@@ -235,42 +235,83 @@
                  style="max-width: 380px; background: white; margin-left: 15px; margin-right: 15px;">
                 <h3 class="fw-bold mb-4">Be a part of India's Top Rated University</h3>
                 
-                <form>
+                <form id="leadForm" action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dbf000001lfIT" method="POST">
+                    <input type="hidden" name="oid" value="00Dbf000001lfIT">
+                    <input type="hidden" name="retURL" value="https://www.chitkara.edu.in/">
+                
+                    <!-- Hidden fields for first and last name -->
+                    <input type="hidden" id="first_name" name="first_name">
+                    <input type="hidden" id="last_name" name="last_name">
+                
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Your Name*">
+                        <input type="text" id="full_name" class="form-control" placeholder="Your Name*" required>
                     </div>
-                    
+                
                     <div class="mb-3 position-relative">
                         <div class="input-group">
                             <span class="input-group-text">
                                 <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
                                      alt="India flag" style="width: 20px;">
                             </span>
-                            <input type="tel" class="form-control" placeholder="Phone Number*">
+                            <input type="tel" name="phone" class="form-control" placeholder="Phone Number*" required>
                         </div>
                     </div>
-                    
+                
                     <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="Your Email ID">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email ID" required>
                     </div>                   
-
+                
                     <div class="mb-3">
-                        <select class="form-select">
-                            <option selected>Select Program</option>
-                            <!-- Add program options -->
+                        <select name="00Nbf0000014xLt" class="form-select" required>
+                            <option value="">Select Program</option>
+                            <option value="MBA">MBA</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Global Programs">Global Programs</option>
+                            <option value="BCA | MCA">BCA | MCA</option>
+                            <option value="IPM | Liberal Arts">IPM | Liberal Arts</option>
+                            <option value="BBA | B.Com | Economics">BBA | B.Com | Economics</option>
+                            <option value="Design | Architecture">Design | Architecture</option>
+                            <option value="Media | Mass Communication">Media | Mass Communication</option>
+                            <option value="5-Year Integrated B.A.LL.B. Law Program">5-Year Integrated B.A.LL.B. Law Program</option>
+                            <option value="Marine (Nautical Sciences)">Marine (Nautical Sciences)</option>
+                            <option value="Hospitality | Culinary Arts">Hospitality | Culinary Arts</option>
+                            <option value="Pharmacy | Pharmacovigilance">Pharmacy | Pharmacovigilance</option>
+                            <option value="Nursing | Allied Healthcare">Nursing | Allied Healthcare</option>
+                            <option value="Physio | Optom | Nutrition">Physio | Optom | Nutrition</option>
+                            <option value="Psychology & Counselling">Psychology & Counselling</option>
+                            <option value="2-Year B.Ed">2-Year B.Ed</option>
+                            <option value="Doctoral Programs">Doctoral Programs</option>
                         </select>
                     </div>                   
-
+                
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="State">
+                        <input type="text" name="00Nbf000001ATWP" class="form-control" placeholder="State">
                     </div>
-                    
+                
                     <p class="text-muted small mb-4">
                         By providing your contact details, you agree to receive updates from Chitkara University through WhatsApp.
                     </p>
-                    
+                
                     <button type="submit" class="btn btn-danger w-100">Apply Now</button>
                 </form>
+
+                <script>
+                    document.getElementById('leadForm').addEventListener('submit', function(event) {
+                        const fullName = document.getElementById('full_name').value.trim();
+                        let firstName = "";
+                        let lastName = "";
+                
+                        if (fullName) {
+                            const nameParts = fullName.split(" ");
+                            firstName = nameParts[0]; // First word as first name
+                            lastName = nameParts.slice(1).join(" ") || "."; // Remaining words as last name
+                        }
+                
+                        // Set hidden fields
+                        document.getElementById('first_name').value = firstName;
+                        document.getElementById('last_name').value = lastName;
+                    });
+                </script>
             </div>
         </div>
     </div>
